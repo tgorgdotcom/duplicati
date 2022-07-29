@@ -15,12 +15,15 @@
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 using System;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.ObjCRuntime;
+//using MonoMac.Foundation;
+//using MonoMac.AppKit;
+//using MonoMac.ObjCRuntime;
 using System.Collections.Generic;
-using MonoMac.CoreGraphics;
+//using MonoMac.CoreGraphics;
 using System.IO;
+using Foundation;
+using AppKit;
+using CoreGraphics;
 
 namespace Duplicati.GUI.TrayIcon
 {
@@ -116,7 +119,7 @@ namespace Duplicati.GUI.TrayIcon
                 var dp = new CGDataProvider(b, 0, b.Length);
                 var img2 = CGImage.FromPNG(dp, null, false, CGColorRenderingIntent.Default);
 
-                return new NSImage(img2, new System.Drawing.SizeF(18, 18));
+                return new NSImage(img2, new CGSize(18, 18));
             }
         }
 
@@ -196,8 +199,8 @@ namespace Duplicati.GUI.TrayIcon
                 // Set the flag
                 m_app.Stop(m_app);
                 // Post an event to trigger the exit
-                m_app.PostEvent(NSEvent.OtherEvent(NSEventType.ApplicationDefined, 
-                    new System.Drawing.PointF(0,0),
+                m_app.PostEvent(NSEvent.OtherEvent(NSEventType.ApplicationDefined,
+                    new CGPoint(0, 0),
                     0, 0, 0, null, 0, 0, 0), true);
             }
         }
@@ -216,11 +219,11 @@ namespace Duplicati.GUI.TrayIcon
         }
 
         protected override void NotifyUser(string title, string message, NotificationType type)
-        {
+        { 
             var notification = new NSUserNotification();
             notification.Title = title;
             notification.InformativeText = message;
-            notification.DeliveryDate = DateTime.Now;
+            notification.DeliveryDate = NSDate.Now;
             notification.SoundName = NSUserNotification.NSUserNotificationDefaultSoundName;
  
             // We get the Default notification Center
