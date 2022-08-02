@@ -440,7 +440,6 @@ namespace Duplicati.GUI.TrayIcon
         {
             get
             {
-                System.Diagnostics.Debugger.Break();
                 var toolkits = new List<string>();
                 if (SupportsWinForms)
                     toolkits.Add(TOOLKIT_WINDOWS_FORMS);
