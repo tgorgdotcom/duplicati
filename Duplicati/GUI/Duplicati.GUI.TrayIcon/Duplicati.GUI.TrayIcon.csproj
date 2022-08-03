@@ -116,6 +116,9 @@
     <Reference Include="CoCoL">
       <HintPath>..\..\..\packages\CoCoL.1.7.1\lib\net45\CoCoL.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Mac">
+      <HintPath>..\..\..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\8.10.0.5\lib\64bits\full\Xamarin.Mac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBrowserWindow.cs" />
@@ -167,6 +170,10 @@
     <EmbeddedResource Include="Resources\context_menu_pause.ico" />
     <EmbeddedResource Include="Resources\context_menu_play.ico" />
     <EmbeddedResource Include="Resources\context_menu_quit.ico" />
+    <None Include="..\..\..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\8.10.0.5\SDKs\Xamarin.macOS.sdk\lib\libxammac.dylib">
+      <Link>libxammac.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CommandLine\ConfigurationImporter\Duplicati.CommandLine.ConfigurationImporter.csproj">
@@ -456,6 +463,9 @@
     <Content Include="SVGIcons\light\context_menu_resume.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OSXTrayHost\" />
   </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>
